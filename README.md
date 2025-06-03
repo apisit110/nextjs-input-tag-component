@@ -1,40 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Example Tag Input for React component
 
-## Getting Started
+Here's an example of a reusable component for a multiple tag input field
 
-First, run the development server:
+## How to add tag
+
+- Users can add tags by typing them and pressing **Enter**
+- When the input loses focus **onBlur**
+
+> **customizable separator** (default: comma)
+
+## How to remove tags
+
+Remove tags by clicking an "X" button next to each tag
+
+## Validation & Condition
+
+| message                              | description                                    |
+| :----------------------------------- | :--------------------------------------------- |
+| invalid must not exceed {{max}} tags | Limit the number of tags (if a maximum is set) |
+| invalid tag is duplicate             | Handle duplicate tags gracefully               |
+| invalid tag is empty                 | some input tag is empty                        |
+| invalid tag is existing              | some input tag is existing in tags             |
+
+## Usage
+
+import TagInput from file, delcare react hook useState then call the component like this
+
+```tsx
+// src/pages/home.tsx
+import React, { useState } from 'react'
+import TagInput from '@/components/commons/TagInput'
+
+const HomePage = (props: { tags?: string[] }) => {
+  const [tags, setTags] = useState<string[]>(props?.tags || [])
+  return (
+    <>
+      <div>Home</div>
+      <div style={{ width: '200px' }}>
+        <TagInput tags={tags} setTags={setTags} max={10} />
+      </div>
+    </>
+  )
+}
+
+export default HomePage
+```
+
+## Props
+
+Common props you may want to specify include:
+
+- `separator` - (optional) - Custom splitter default = comma
+- `tags` - state from react hook useState
+- `setTags` - setStateAction from react hook useState
+- `max` - (optional) - Limit the total number of tags that can be added
+
+## Start
+
+This example uses Node.js version 22. If you have nvm installed, you can switch to this version by running `nvm use` before starting the example
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
