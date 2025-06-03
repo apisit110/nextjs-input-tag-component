@@ -2,6 +2,8 @@
 
 Here's an example of a reusable component for a multiple tag input field
 
+![example](https://github.com/user-attachments/assets/6a7b241a-e588-4c74-a4ce-7144afa62b85)
+
 ## How to add tag
 
 - Users can add tags by typing them and pressing **Enter**
