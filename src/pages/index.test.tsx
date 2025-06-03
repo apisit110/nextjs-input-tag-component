@@ -11,7 +11,7 @@ describe('Home', () => {
   afterEach(() => {
     cleanup()
   })
-  
+
   // -------------------- ENTER --------------------
   // -------------------- ENTER --------------------
   // -------------------- ENTER --------------------
@@ -383,5 +383,27 @@ describe('Home', () => {
     fireEvent.blur(inputElement)
     const errorMessage = screen.getByText(VALIDATE_ERROR_MASTER.INVALID_TAG_IS_EXISTING)
     expect(errorMessage).toBeInTheDocument()
+  })
+
+  // -------------------- BTN CLOSE --------------------
+  // -------------------- BTN CLOSE --------------------
+  // -------------------- BTN CLOSE --------------------
+  // -------------------- BTN CLOSE --------------------
+  // -------------------- BTN CLOSE --------------------
+  it.only('TC_CLOSE_01 - positive - close tag', () => {
+    const { container } = render(<HomePage />)
+    const inputElement = getTagInputElement(container)
+
+    fireEvent.change(inputElement, { target: { value: 'tag 1' } })
+    fireEvent.keyDown(inputElement, { key: 'Enter', code: 'Enter' })
+    const tags = screen.getByText('tag 1')
+    expect(tags).toBeInTheDocument()
+
+    const getBtnClose = (tagName: string) => {
+      return screen.getByText(tagName).nextSibling
+    }
+    const closeElement = getBtnClose('tag 1')
+    if (closeElement) fireEvent.click(closeElement)
+    expect(tags).not.toBeInTheDocument()
   })
 })
