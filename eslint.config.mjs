@@ -18,7 +18,11 @@ const eslintConfig = [
       indent: ['error', 2],
       'comma-dangle': ['error', 'never'],
 
-      'no-trailing-spaces': 'error'
+      'no-trailing-spaces': 'error',
+      parser: 'vue-eslint-parser',
+      parserOptions: {
+        parser: '@typescript-eslint/parser'
+      }
     }
   }
 ]
