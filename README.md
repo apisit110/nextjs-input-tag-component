@@ -62,3 +62,9 @@ This example uses Node.js version 22. If you have nvm installed, you can switch 
 ```bash
 npm run dev
 ```
+
+## Docs
+
+- https://nextjs.org/docs/pages/guides/testing/jest
+- https://testing-library.com/docs/react-testing-library/intro/
+
