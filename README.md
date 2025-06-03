@@ -27,7 +27,7 @@ Remove tags by clicking an "X" button next to each tag
 import TagInput from file, delcare react hook useState then call the component like this
 
 ```tsx
-// src/pages/home.tsx
+// src/pages/index.tsx
 import React, { useState } from 'react'
 import TagInput from '@/components/commons/TagInput'
 
