@@ -1,0 +1,6 @@
+{
+  "INVALID_TAG_LIMIT": "invalid must not exceed {{max}} tags",
+  "INVALID_TAG_DUPLICATE": "invalid tag is duplicate",
+  "INVALID_TAG_IS_EMPTY": "invalid tag is empty",
+  "INVALID_TAG_IS_EXISTING": "invalid tag is existing"
+}

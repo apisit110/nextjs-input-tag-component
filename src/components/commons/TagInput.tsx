@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import styled from 'styled-components'
+import VALIDATE_ERROR_MASTER from '@/constants/masters/validateErrorMaster.json'
 
 const COLOR_PALETTE = {
   default: {
@@ -68,13 +69,13 @@ const validateInput = ({
     const totalTags = tags.length + input.length
     if (!errorMessage) {
       if (max !== undefined && totalTags > max) {
-        errorMessage = `invalid must not exceed ${max} tags`
+        errorMessage = VALIDATE_ERROR_MASTER.INVALID_TAG_LIMIT.replace('{{max}}', String(max))
       }
     }
 
     if (!errorMessage) {
       if (hasDuplicates(input.map((item) => item.trim()))) {
-        errorMessage = 'invalid tag is duplicate'
+        errorMessage = VALIDATE_ERROR_MASTER.INVALID_TAG_DUPLICATE
       }
     }
 
@@ -83,7 +84,7 @@ const validateInput = ({
 
       if (!errorMessage) {
         if (inputItem === '') {
-          errorMessage = 'invalid tag is empty'
+          errorMessage = VALIDATE_ERROR_MASTER.INVALID_TAG_IS_EMPTY
           break
         }
       }
@@ -91,7 +92,7 @@ const validateInput = ({
       if (!errorMessage) {
         const isExisting = tags.find((tag) => tag === inputItem)
         if (isExisting) {
-          errorMessage = 'invalid tag is existing'
+          errorMessage = VALIDATE_ERROR_MASTER.INVALID_TAG_IS_EXISTING
           break
         }
       }
