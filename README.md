@@ -31,13 +31,13 @@ import TagInput from file, delcare react hook useState then call the component l
 import React, { useState } from 'react'
 import TagInput from '@/components/commons/TagInput'
 
-const HomePage = (props: { tags?: string[] }) => {
+const HomePage = (props: { tags?: string[], max?: number }) => {
   const [tags, setTags] = useState<string[]>(props?.tags || [])
   return (
     <>
       <div>Home</div>
       <div style={{ width: '200px' }}>
-        <TagInput tags={tags} setTags={setTags} max={10} />
+        <TagInput tags={tags} setTags={setTags} max={props.max} />
       </div>
     </>
   )
@@ -61,6 +61,12 @@ This example uses Node.js version 22. If you have nvm installed, you can switch 
 
 ```bash
 npm run dev
+```
+
+run test every time when commit or before merge to git
+
+```bash
+npm run test
 ```
 
 ## Docs
