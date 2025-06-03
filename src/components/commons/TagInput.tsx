@@ -12,6 +12,7 @@ const InputTagContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  flex: 1 1 0%;
   row-gap: 4px;
   column-gap: 4px;
   padding: 8px;
@@ -23,25 +24,30 @@ const InputTagContainer = styled.div`
   .tag-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 
-    gap: 2px;
     border: 1px solid ${COLOR_PALETTE.default.black};
+    overflow: hidden;
   }
   .multiple-tag-label {
-    /* border-right: 1px solid ${COLOR_PALETTE.default.black}; */
     padding: 0px 4px;
+    width: calc(100% - 15px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .multiple-tag-btn-close {
-    padding: 0px 4px;
+    width: 15px;
+    text-align: center;
+    cursor: pointer;
   }
 
   .input-container {
-    border: 1px solid purple;
+    flex: 1 1 auto;
   }
   .input-text {
-    /* height: 100%; */
+    width: 100%;
     border: none;
     outline: none;
   }
@@ -195,7 +201,7 @@ const TagInput = (props: {
             onBlur={handleBlur}
             onKeyDown={handleKeyDown}
             value={inputTag}
-            placeholder={!tags ? 'Placeholder' : undefined}
+            placeholder={tags?.length === 0 ? 'Placeholder' : undefined}
           />
         </div>
       </InputTagContainer>

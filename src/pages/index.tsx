@@ -6,7 +6,7 @@ const HomePage = (props: { tags?: string[], max?: number }) => {
   return (
     <>
       <div>Home</div>
-      <div style={{ width: '200px' }}>
+      <div style={{ width: '350px' }}>
         <TagInput tags={tags} setTags={setTags} max={props.max} />
       </div>
     </>
